@@ -11,6 +11,5 @@
 
 char *raw_input(char *outMessage);
 char **split(char *string, char *delimiters);
-void freeSplitted(char **string);
 
 #endif //SO_TAREA2_MINISHELL_STRPARSE_H

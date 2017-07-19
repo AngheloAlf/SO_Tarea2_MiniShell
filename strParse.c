@@ -5,7 +5,7 @@
 #include "strParse.h"
 
 char *raw_input(char *outMessage){
-    printf(outMessage);
+    printf("%s", outMessage);
 
     int inSize = 32;
     char *inData = malloc(sizeof(char)*inSize);
@@ -32,10 +32,10 @@ char *raw_input(char *outMessage){
             }
             auxData = realloc(auxData, sizeof(char)*(len + inSize)); //String mas grande!
         }
+        free(inData);
         free(auxData);
         return NULL;
     }
-
 }
 
 char **split(char *string, char *delimiters){
@@ -46,18 +46,7 @@ char **split(char *string, char *delimiters){
     while(token != NULL){
         splitted = realloc(splitted, sizeof(char *) * (i + 1));
         token = strtok(NULL, delimiters);
-
         splitted[i++] = token;
     }
     return splitted;
-}
-
-void freeSplitted(char **string){
-    char *token = string[0];
-    int i = 0;
-    while(token != NULL){
-        free(token);
-        token = string[++i];
-    }
-    free(token);
 }
